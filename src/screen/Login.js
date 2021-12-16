@@ -4,7 +4,8 @@ import image from "../assert/image2.svg";
 import { StateHandler } from "../contextProvider/MainProvider";
 
 function Login() {
-    const { state,loginUserWithCredential, loginError, setLoginError,email, setEmail,password, setPassword } = StateHandler();
+    const [toggle, setToggle] = useState(false)
+    const { state, loginUserWithCredential, loginError, setLoginError, email, setEmail, password, setPassword } = StateHandler();
     console.log(state)
 
     function SubmitHandler(e) {
@@ -19,14 +20,22 @@ function Login() {
                 }
             } else {
                 setLoginError("Invalid Credential")
-                setTimeout(()=>{
+                setTimeout(() => {
                     setEmail("")
                     setPassword("")
                     setLoginError(null)
-                },3000)
+                }, 3000)
             }
         }
 
+    }
+
+    function ToggleHandler() {
+        if (toggle) {
+            setToggle(false)
+        } else {
+            setToggle(true)
+        }
     }
     return (
         <div className="login">
@@ -54,12 +63,13 @@ function Login() {
                         Password:
                         <input
                             className="password inputData"
-                            type="password"
+                            type={toggle ? "text" : "password"}
                             placeholder="Enter Password...."
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </lebal>
+                    <span className='show-hide' onClick={ToggleHandler}>{toggle ? "hide" : "show"}</span>
                     <button
                         className="submitbtn"
                         type="submit"
