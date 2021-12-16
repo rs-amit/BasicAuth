@@ -1,0 +1,23 @@
+.home{
+    /* border: 1px solid black; */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout{
+    padding:5px 10px;
+    font-size: large;
+    background-color: rgb(129, 129, 250);
+    border: 2px solid rgb(5, 5, 170);
+    border-radius: 5px;
+    font-weight: 600;
+
+}
+.home-msg{
+   margin: 10px 0;
+   font-family: sans-serif;
+
+   
+}
